@@ -1,0 +1,108 @@
+{ 
+    "version": 2, 
+    "configurePresets": [ 
+        {
+            "name": "vcpkg_windows_rel",
+            "displayName": "Windows Configure Release",
+            "description": "Sets Visual Studio 16 2019 generator, build and install directory",
+            "generator": "Visual Studio 16 2019",
+            "binaryDir": "${sourceDir}/build",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release",
+                "CMAKE_TOOLCHAIN_FILE": "D:/vcpkg/scripts/buildsystems/vcpkg.cmake",
+                "VCPKG_TARGET_TRIPLET": "x64-windows"
+            }
+        }, 
+        {
+            "name": "vcpkg_windows_deb",
+            "displayName": "Windows Configure Debug",
+            "description": "Sets Visual Studio 16 2019 generator, build and install directory",
+            "generator": "Visual Studio 16 2019",
+            "binaryDir": "${sourceDir}/build",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_TOOLCHAIN_FILE": "D:/vcpkg/scripts/buildsystems/vcpkg.cmake",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/install",
+                "VCPKG_TARGET_TRIPLET": "x64-windows"
+            }
+        },
+        {  
+            "name": "vcpkg_linux_rel", 
+            "displayName": "Linux Configure Release", 
+            "description": "Sets Unix Makefiles generator, build and install directory", 
+            "generator": "Unix Makefiles", 
+            "binaryDir": "${sourceDir}/build", 
+            "cacheVariables": { 
+                "CMAKE_BUILD_TYPE": "Release", 
+                "CMAKE_TOOLCHAIN_FILE": "/home/jt/.src/vcpkg/scripts/buildsystems/vcpkg.cmake", 
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/install" 
+            } 
+        },
+        { 
+            "name": "vcpkg_linux_deb", 
+            "displayName": "Linux Configure Debug", 
+            "description": "Sets Unix Makefiles generator, build and install directory", 
+            "generator": "Unix Makefiles", 
+            "binaryDir": "${sourceDir}/build", 
+            "cacheVariables": { 
+                "CMAKE_BUILD_TYPE": "Debug", 
+                "CMAKE_TOOLCHAIN_FILE": "/home/jt/.src/vcpkg/scripts/buildsystems/vcpkg.cmake", 
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/install" 
+            } 
+        } 
+    ], 
+    "buildPresets": [
+        {
+            "name": "vcpkg_windows_rel",
+            "description": "",
+            "displayName": "Windows Build Release",
+            "jobs": 12,
+            "configurePreset": "vcpkg_windows_rel",
+            "configuration": "Release",
+            "environment": {
+                "CMAKE_BUILD_TYPE": "Release",
+                "CMAKE_TOOLCHAIN_FILE": "D:/vcpkg/scripts/buildsystems/vcpkg.cmake",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/install"
+            }
+        },
+        {
+            "name": "vcpkg_windows_deb",
+            "description": "",
+            "displayName": "Windows Build Debug",
+            "jobs": 12,
+            "configurePreset": "vcpkg_windows_deb",
+            "configuration": "Debug",
+            "environment": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_TOOLCHAIN_FILE": "D:/vcpkg/scripts/buildsystems/vcpkg.cmake",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/install"
+            }
+        },
+        { 
+            "name": "vcpkg_linux_rel", 
+            "description": "", 
+            "displayName": "Linux Build Release", 
+            "jobs": 12, 
+            "configurePreset": "vcpkg_linux_rel", 
+            "configuration": "Release", 
+            "environment": { 
+                "CMAKE_BUILD_TYPE": "Release", 
+                "CMAKE_TOOLCHAIN_FILE": "/home/jt/.src/vcpkg/scripts/buildsystems/vcpkg.cmake", 
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/install" 
+            } 
+        },
+        { 
+            "name": "vcpkg_linux_deb", 
+            "description": "", 
+            "displayName": "Linux Build Debug", 
+            "jobs": 12, 
+            "configurePreset": "vcpkg_linux_deb", 
+            "configuration": "Debug", 
+            "environment": { 
+                "CMAKE_BUILD_TYPE": "Debug", 
+                "CMAKE_TOOLCHAIN_FILE": "/home/jt/.src/vcpkg/scripts/buildsystems/vcpkg.cmake", 
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/install" 
+            } 
+        } 
+    ]
+}

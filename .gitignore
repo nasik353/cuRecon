@@ -1,0 +1,4 @@
+build/
+install/
+.vscode/
+data/*.h5
