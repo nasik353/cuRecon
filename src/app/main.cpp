@@ -162,12 +162,12 @@ int main(int, char **)
 
     std::unique_ptr<hdf5::HDF5ImageLoader> loader;
 
-    if (std::filesystem::exists(""))
+    if (std::filesystem::exists("data/egg_scan.h5"))
     {
+        loader = std::make_unique<hdf5::HDF5ImageLoader>("data/egg_scan.h5");
     }
 
-    // std::vector<std::string> frame_names = loader->get_frame_names();
-    std::vector<std::string> frame_names = {};
+    std::vector<std::string> frame_names = loader->get_frame_names();
     std::vector<bool> selected(frame_names.size(), false);
 
     float duration = 0.0f;
